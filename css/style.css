@@ -6,6 +6,9 @@ button {
 
 body {
   text-align: center;
+  height: 100vh;
+  align-items: center;
+  display: flex;
 }
 
 .game {
@@ -47,6 +50,7 @@ body {
   border-radius: 20px;
   font-size: 32px;
   margin-top: 8px;
+  visibility: hidden;
 }
 
 .game__score {
@@ -59,6 +63,7 @@ body {
   background-color: darksalmon;
   color: #fff;
   text-align: center;
+  visibility: hidden;
 }
 
 .game__field{
