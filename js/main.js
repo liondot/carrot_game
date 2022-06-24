@@ -15,6 +15,12 @@ const popUp = document.querySelector('.pop-up');
 const popUpRefresh = document.querySelector('.pop-up__refresh');
 const popUpText = document.querySelector('.pop-up__message');
 
+const carrotSound = new Audio('./sound/carrot_pull.mp3');
+const alertSound = new Audio('./sound/alert.wav');
+const bgSound = new Audio('./sound/bg.mp3');
+const bugSound = new Audio('./sound/bug_pull.mp3');
+const winSound = new Audio('./sound/game_win.mp3');
+
 let started = false;
 let score = 0;
 let timer = undefined;
@@ -41,6 +47,7 @@ function startGame(){
   showStopButton();
   showTimerAndScore();
   startGameTimer();
+  playSound(bgSound)
 }
 
 function stopGame(){
@@ -48,13 +55,21 @@ function stopGame(){
   stopGameTimer();
   hideGameButton();
   showPopUpWithText('REPLAY?');
+  playSound(alertSound)
+  stopSound(bgSound)
 }
 
 function finishedGame(win) {
   started = false;
   hideGameButton();
+  if(win) {
+    playSound(winSound);
+  }else {
+    playSound(bugSound)
+  }
+  stopGameTimer();
   showPopUpWithText(win? 'YOU WON!!!' : 'YOU LOST!!!')
-
+  stopSound(bgSound);
 }
 
 function showStopButton(){
@@ -105,6 +120,7 @@ function updateTimerText(time) {
 }
 
 function initGame() {
+  score = 0;
   field.innerHTML = '';
   gameScore.innerText = CARROT_COUNT
   // 벌레와 당근을 생성한뒤 field에 추가 
@@ -123,6 +139,7 @@ function onFieldClick(event){
     //  당근 
     target.remove();
     score++;
+    playSound(carrotSound)
     updateScoreBoard();
     if(score === CARROT_COUNT) {
       finishedGame(true)
@@ -130,11 +147,19 @@ function onFieldClick(event){
 
   } else if (target.matches('.bug')){
     // 버그 
-    stopGameTimer();
+   
     finishedGame(false);
   }
 }
 
+function playSound(sound) {
+  sound.currentTime = 0
+  sound.play()
+}
+
+function stopSound(sound) {
+  sound.pause()
+}
 
 
 function updateScoreBoard() {
