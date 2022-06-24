@@ -9,6 +9,7 @@ body {
   height: 100vh;
   align-items: center;
   display: flex;
+  position: relative;
 }
 
 .game {
@@ -50,11 +51,7 @@ body {
   border-radius: 20px;
   font-size: 32px;
   margin-top: 8px;
-<<<<<<< HEAD
   visibility: hidden;
-=======
-  visibility:  hidden;
->>>>>>> 73d5d1eea26ff56228a0a4c2d11ac098e0233a3d
 }
 
 .game__score {
@@ -87,6 +84,10 @@ body {
   padding: 20px;
   transform: translateY(-150%);
   border-radius: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .pop-up--hide {
