@@ -1,11 +1,19 @@
 "use-strict"
 
 const CARROT_SIZE = 80;
+<<<<<<< HEAD
 const CARROT_COUNT = 5; 
 const BUG_COUNT = 5;
 
 const field = document.querySelector('.game__field');
 const fieldRect = field.getBoundingClientRect(); 
+=======
+const BUG_COUNT = 5;
+const CARROT_COUNT = 5;
+
+const field = document.querySelector('.game__field');
+const fieldRect = field.getBoundingClientRect();
+>>>>>>> 73d5d1eea26ff56228a0a4c2d11ac098e0233a3d
 const gameBtn = document.querySelector('.game__button');
 const gameTimer = document.querySelector('.game__timer');
 const gameScore = document.querySelector('.game__score');
@@ -16,6 +24,7 @@ let timer = undefined;
 
 gameBtn.addEventListener('click', ()=> {
   if(started) {
+<<<<<<< HEAD
     stopGame();
   } else {
     startGame();
@@ -41,15 +50,51 @@ function showStopButton(){
 function showTimerAndScore() {
   gameTimer.style.visibility = 'visible';
   gameScore.style.visibility = 'visible';
+=======
+    stopGame()
+  } else {
+    startGame();
+  }
+  started = !started
+})
+
+function startGame() {
+  initGame();
+  showStopButton();
+  showTimerAndScore();
+  startGameTimer();
+}
+
+function showTimerAndScore() {
+  gameTimer.style.visiblility = 'visible';
+  gameScore.style.visibility = 'visible';
+}
+
+function stopGame() {}
+
+function showStopButton() {
+  const icon = gameBtn.querySelector('.fa-play');
+  icon.classList.add('fa-stop');
+  icon.classList.remove('fa-play');
+>>>>>>> 73d5d1eea26ff56228a0a4c2d11ac098e0233a3d
 }
 
 
 function initGame() {
+  field.innerHTML = '';
+  gameScore.innerText = CARROT_COUNT
   // 벌레와 당근을 생성한뒤 field에 추가 
+<<<<<<< HEAD
   field.innerHTML = '';
   gameScore.innerText = CARROT_COUNT;
   addItem('carrot', CARROT_COUNT, 'imgs/carrot.png');
   addItem('bug', BUG_COUNT, 'imgs/bug.png');
+=======
+  console.log(fieldRect)
+  addItem('carrot', BUG_COUNT, 'imgs/carrot.png');
+  addItem('bug', CARROT_COUNT, 'imgs/bug.png');
+
+>>>>>>> 73d5d1eea26ff56228a0a4c2d11ac098e0233a3d
 }
 
 function addItem(className, count, imgPath) {
@@ -73,3 +118,7 @@ function addItem(className, count, imgPath) {
 function randomeNumber(min, max) {
   return Math.random() * (max - min) + min
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 73d5d1eea26ff56228a0a4c2d11ac098e0233a3d
